@@ -13,12 +13,15 @@
     <Folder Include="Extentions\" />
     <Folder Include="Events\" />
     <Folder Include="Converters\" />
-    <Folder Include="Container\" />
     <Folder Include="Interface\" />
     <Folder Include="Pages\" />
     <Folder Include="ResourceDictianary\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.2.0" />
   </ItemGroup>
 
 </Project>

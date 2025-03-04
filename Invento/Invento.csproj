@@ -19,7 +19,6 @@
     <Folder Include="ResourceDictianary\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
-    <Folder Include="Wrapper\" />
   </ItemGroup>
 
 </Project>

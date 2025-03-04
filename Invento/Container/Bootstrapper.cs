@@ -9,7 +9,11 @@ namespace Invento.Container
         {
             var bulider = new ContainerBuilder();
 
+            bulider.RegisterType<MainWindow>().AsSelf();
+
            
+
+
             return bulider.Build();
         }
     }

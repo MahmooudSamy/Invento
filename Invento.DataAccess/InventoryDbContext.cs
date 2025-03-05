@@ -5,6 +5,10 @@ namespace Invento.DataAccess
 {
     public class InventoryDbContext : DbContext
     {
+        public InventoryDbContext()
+        {
+
+        }
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options)
             : base(options)
         {
@@ -74,15 +78,17 @@ namespace Invento.DataAccess
             );
 
             modelBuilder.Entity<InventoryItem>().HasData(
-                new InventoryItem { ItemId = 1, InventoryId = 1, Quantity = 10, LastUpdate = DateTime.Now },
-                new InventoryItem { ItemId = 2, InventoryId = 1, Quantity = 20, LastUpdate = DateTime.Now },
-                new InventoryItem { ItemId = 3, InventoryId = 1, Quantity = 10, LastUpdate = DateTime.Now },
-                new InventoryItem { ItemId = 4, InventoryId = 1, Quantity = 50, LastUpdate = DateTime.Now },
-                new InventoryItem { ItemId = 5, InventoryId = 1, Quantity = 20, LastUpdate = DateTime.Now },
-                new InventoryItem { ItemId = 6, InventoryId = 1, Quantity = 30, LastUpdate = DateTime.Now },
-                new InventoryItem { ItemId = 7, InventoryId = 1, Quantity = 5,  LastUpdate = DateTime.Now }
+                new InventoryItem { ItemId = 1, InventoryId = 1, Quantity = 10, LastUpdate = new DateTime(2025, 03, 05) },
+                new InventoryItem { ItemId = 2, InventoryId = 1, Quantity = 20, LastUpdate = new DateTime(2025, 03, 05) },
+                new InventoryItem { ItemId = 3, InventoryId = 1, Quantity = 10, LastUpdate = new DateTime(2025, 03, 05) },
+                new InventoryItem { ItemId = 4, InventoryId = 1, Quantity = 50, LastUpdate = new DateTime(2025, 03, 05) },
+                new InventoryItem { ItemId = 5, InventoryId = 1, Quantity = 20, LastUpdate = new DateTime(2025, 03, 05) },
+                new InventoryItem { ItemId = 6, InventoryId = 1, Quantity = 30, LastUpdate = new DateTime(2025, 03, 05) },
+                new InventoryItem { ItemId = 7, InventoryId = 1, Quantity = 5,  LastUpdate = new DateTime(2025, 03, 05) }
             );
+
             base.OnModelCreating(modelBuilder);
+
         }
 
 

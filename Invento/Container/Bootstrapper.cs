@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using System.Windows;
+using Invento.DataAccess;
 
 namespace Invento.Container
 {
@@ -11,6 +11,8 @@ namespace Invento.Container
 
             bulider.RegisterType<MainWindow>().AsSelf();
 
+
+            bulider.RegisterType<InventoryDbContext>().AsSelf();
 
 
             ////services

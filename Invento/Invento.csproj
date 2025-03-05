@@ -31,4 +31,8 @@
     <PackageReference Include="Prism.Core" Version="9.0.537" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Invento.DataAccess\Invento.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

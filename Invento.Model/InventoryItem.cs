@@ -15,7 +15,7 @@ namespace Invento.Model
 
         public int Quantity { get; set; }
         public DateTime LastUpdate { get; set; }
-        public required Item Item { get; set; }
-        public required Inventory Inventory { get; set; }
+        public  Item Item { get; set; }
+        public  Inventory Inventory { get; set; }
     }
 }

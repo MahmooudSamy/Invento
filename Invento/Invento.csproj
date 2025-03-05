@@ -15,7 +15,6 @@
     <Folder Include="Converters\" />
     <Folder Include="Interface\" />
     <Folder Include="Pages\" />
-    <Folder Include="ResourceDictianary\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>

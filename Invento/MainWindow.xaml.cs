@@ -21,7 +21,7 @@ namespace Invento
         {
             InitializeComponent();
         }
-        private bool StateClosed = true;
+       
         private void PART_TITLEBAR_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -79,19 +79,6 @@ namespace Invento
 
      
 
-        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
-        {
-            if (StateClosed)
-            {
-                Storyboard sb = FindResource("OpenMenu") as Storyboard;
-                sb.Begin();
-            }
-            else
-            {
-                Storyboard sb = FindResource("CloseMenu") as Storyboard;
-                sb.Begin();
-            }
-            StateClosed = !StateClosed;
-        }
+       
     }
 }

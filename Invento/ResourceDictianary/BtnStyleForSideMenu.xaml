@@ -15,7 +15,7 @@
 
     <!-- Style part End. -->
     <!-- Create tamplate part Start. -->
-    <Style x:Key="StyleOfMenueButton" TargetType="{x:Type Button}">
+    <Style x:Key="StyleOfSideMenueButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="#FF212121"/>
@@ -55,7 +55,7 @@
                             <Setter Property="Background" Value="#FFFFCA40"/>
                             <Setter  Property="BorderThickness" Value="0"/>
                             <Setter  Property="BorderBrush" Value="#FFFFCA40"/>
-                            <Setter  Property="Foreground" Value="#FFFFCA40"/>
+                            <Setter  Property="Foreground" Value="#FF080808"/>
                             <Setter Property="Margin" Value="0" />
 
                         </Trigger>
@@ -64,7 +64,7 @@
                         <!-- Mouseover procead Start. -->
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{x:Null}"/>
-                            <Setter  Property="BorderThickness" Value="0"/>
+                            <Setter  Property="BorderThickness" Value="2"/>
                             <Setter  Property="BorderBrush" Value="#FFFFCA40"/>
                             <Setter  Property="Foreground" Value="#FF080808"/>
                             <Setter Property="Margin" Value="0" />
@@ -74,17 +74,17 @@
 
                         <!-- ButtonFocus procead Start. -->
                         <Trigger Property="IsDefaulted" Value="True">
-                            <Setter Property="Background" Value="{x:Null}"/>
+                            <Setter Property="Background" Value="#FFFFCA40"/>
                             <Setter  Property="BorderThickness" Value="0"/>
                             <Setter  Property="BorderBrush" Value="#FFFFCA40"/>
-                            <Setter  Property="Foreground" Value="#FFFFCA40"/>
+                            <Setter  Property="Foreground" Value="#FF080808"/>
                             <Setter Property="Margin" Value="0" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" Value="{x:Null}"/>
+                            <Setter Property="Background" Value="#FFFFCA40"/>
                             <Setter  Property="BorderThickness" Value="0"/>
                             <Setter  Property="BorderBrush" Value="#FFFFCA40"/>
-                            <Setter  Property="Foreground" Value="#FFFFCA40"/>
+                            <Setter  Property="Foreground" Value="#FF080808"/>
                             <Setter Property="Margin" Value="0" />
                         </Trigger>
                         <!-- ButtonFocus procead End. -->

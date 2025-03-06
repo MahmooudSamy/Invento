@@ -33,4 +33,10 @@
     <ProjectReference Include="..\Invento.DataAccess\Invento.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="SearchText">
+      <HintPath>..\..\..\..\..\Easing tools\WPFControls\SearchText\SearchTextControl\SearchText\bin\Debug\net5.0-windows\SearchText.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -31,7 +31,7 @@ namespace Invento.Container
 
             ////ViewModel
             //bulider.RegisterType<UserViewModel>().As<IUserViewModel>();
-            //bulider.RegisterType<AnswerViewModel>().As<IAnswerViewModel>();
+            bulider.RegisterType<ListOfItemsViewModel>().As<IListOfItemsViewModel>();
             bulider.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
             //bulider.RegisterType<NotificationViewModel>().As<INotificationViewModel>();
             //bulider.RegisterType<LogInViewModel>().As<ILogInViewModel>();

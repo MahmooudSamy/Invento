@@ -1,5 +1,5 @@
 ﻿<UserControl x:Class="Invento.Views.ListItemsView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,7 +9,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -29,7 +31,7 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -42,89 +44,78 @@
             <TextBlock Grid.Column="2" Text="Instock" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
             <custom:SearchTextBox x:Name="TxtSearch" Grid.Column="4" Width="250" Height="40" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Margin="0 0 20 0" Hint="Search by Name" FontSize="14" SearchMode="Instant" Search="TxtSearch_Search"/>
         </Grid>
-       
-        <Border Grid.Column="1" Grid.Row="2" Background="#dae2ea" BorderBrush="#E0E0E0"
-BorderThickness="0 0 0 5" CornerRadius="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition  Width="Auto" MinWidth="10"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="40"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="20"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="200"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="20"/>
-                    <ColumnDefinition Width="Auto" MinWidth="150"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="20"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="150"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="20"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="150"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="20"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="150"/>
-                    <ColumnDefinition  Width="Auto" MinWidth="10"/>
-                </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" HorizontalAlignment="Center" Grid.Column="1" Text="#" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18"/>
-                <TextBlock Grid.Row="0"    Grid.Column="3" Text="Name" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18"/>
-                <TextBlock Grid.Row="0"  Grid.Column="5" Text="Category" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18"/>
-                <TextBlock Grid.Row="0"  Grid.Column="7" Text="Quantaty" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18"/>
-                <TextBlock Grid.Row="0"  Grid.Column="9" Text="Last Update" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18"/>
-                <TextBlock Grid.Row="0"  Grid.Column="11" Text="Actions" FontWeight="Bold" Foreground="#FF737B83" TextAlignment="Center" VerticalAlignment="Center"  FontSize="18"/>
+        <Grid  Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Background="#dae2ea" BorderBrush="#E0E0E0"
+BorderThickness="0 0 0 5"  Grid.Row="0"   Grid.ColumnSpan="8"  >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="#" Width="10" Grid.Row="0" Grid.Column="0"  FontSize="20" TextWrapping="Wrap" TextAlignment="Left"  Foreground="#FF343434" FontWeight="Bold"   Style="{DynamicResource MaterialDesignDisplay2TextBlock}" Margin="70,0"/>
+                    <TextBlock Text="Name" Width="150" Grid.Row="0" Grid.Column="1"  FontSize="16"    TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center"  Foreground="#FF343434" FontWeight="Bold"  Style="{DynamicResource MaterialDesignBody2TextBlock  }" Margin="0,6"/>
+                    <TextBlock Text="Category" Width="150" Grid.Row="0" Grid.Column="2" FontSize="16"    TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center" Foreground="#FF343434" FontWeight="Bold"  Style="{DynamicResource TextBlockStyle1}" Margin="0,7,0,6"   />
+                    <TextBlock Text="Quantaty" Width="150" Grid.Row="0" Grid.Column="3"   FontSize="16" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434" FontWeight="Bold" Grid.ColumnSpan="2" VerticalAlignment="Center"  />
+                    <TextBlock Text="Last Update" Width="150" Grid.Row="0" Grid.Column="5"    FontSize="16" TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center" Foreground="#FF343434" FontWeight="Bold"  Style="{DynamicResource MaterialDesignDisplay2TextBlock}" />
+                    <TextBlock Text="Actions" Width="150" Grid.Row="0" Grid.Column="6"    FontSize="16" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"  Foreground="#FF343434" FontWeight="Bold"  Style="{DynamicResource MaterialDesignDisplay2TextBlock}" />
 
-            </Grid>
-        </Border>
-        <ScrollViewer Grid.Row="3" Grid.Column="1">
-            <Grid x:Name="GrdBody" Grid.Row="2" Grid.Column="1" Height="auto">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto" MinWidth="10"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5"/>
-                    <RowDefinition Height="Auto" MinHeight="45"/>
-
-                    <RowDefinition Height="10"/>
-                </Grid.RowDefinitions>
-                <Border Grid.Row="1" Grid.Column="1" Background="White" BorderBrush="#E0E0E0" 
-BorderThickness="0 0 0 5 " CornerRadius="5 0 0 5">
-                    <Grid>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1"   Grid.ColumnSpan="8"  >
+                <Border Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="7"  >
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="20"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="170"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="20"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" Grid.Column="1" Text="1" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18"/>
-                        <TextBlock Grid.Row="0"  HorizontalAlignment="Center" Grid.Column="3" Text="Mahmoud Samy" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="16"/>
-                        <TextBlock  HorizontalAlignment="Left" Grid.Column="3" Text="M" FontWeight="Bold" Foreground="#ffffff"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18" Margin="12,0,0,0"/>
-                        <TextBlock Grid.Row="0"  HorizontalAlignment="Center" Grid.Column="5" Text=".Net Developer" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="16"/>
-                        <TextBlock Grid.Row="0"  HorizontalAlignment="Center" Grid.Column="7" Text="10" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="16"/>
-                        <TextBlock Grid.Row="0"  HorizontalAlignment="Center" Grid.Column="9" Text="01200025452" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="16"/>
-                        <Button Grid.Row="0"   HorizontalAlignment="Center" Grid.Column="11" Width="35" Height="30"  Style="{DynamicResource StyleOfSideMenueButton}">
-                            <materialDesign:PackIcon Kind="ViewArrowLeftOutline" VerticalAlignment="Center" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"/>
+                        <TextBlock Text="1" Width="10" Grid.Row="0" Grid.Column="0"  FontSize="20" TextWrapping="Wrap" TextAlignment="Left"  Foreground="#FF343434"   Style="{DynamicResource MaterialDesignDisplay2TextBlock}" Margin="70,0"/>
+                        <TextBlock Text="qnp bank" Width="150" Grid.Row="0" Grid.Column="1"  FontSize="20"   TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center"  Foreground="#FF343434"  Style="{DynamicResource MaterialDesignBody2TextBlock  }" Margin="0,6"/>
+                        <TextBlock Text="Checking" Width="150" Grid.Row="0" Grid.Column="2" FontSize="20"   TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center" Foreground="#FF343434"  Style="{DynamicResource TextBlockStyle1}" Margin="0,7,0,6"   />
+                        <TextBlock Text="4000" Width="150" Grid.Row="0" Grid.Column="3"  FontSize="20" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434"  Grid.ColumnSpan="2"   />
+                        <TextBlock Text="EGP" Width="150" Grid.Row="0" Grid.Column="5"    FontSize="20" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434"    />
+
+                        <Button   Style="{DynamicResource StyleOfSideMenueButton}" Width="40" Grid.Row="0" Grid.Column="6" Height="30"   Margin="20,0,56,0" >
+                            <materialDesign:PackIcon Kind="ViewArrowLeftOutline" ToolTip="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
+                        </Button>
+                        <Button  Style="{DynamicResource StyleOfSideMenueButton}" Width="40"  Grid.Row="0" Grid.Column="6" FontSize="20"  Foreground="#FF343434" FontWeight="Bold"  Margin="0,0,20,0"  HorizontalAlignment="Right" >
+                            <materialDesign:PackIcon Kind="Edit" ToolTip="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
 
                         </Button>
-                        <Button Grid.Row="0"   HorizontalAlignment="Center" Grid.Column="11" Width="35" Height="30"  Style="{DynamicResource StyleOfSideMenueButton}"  Margin="85 0 0 0">
-                            <materialDesign:PackIcon Kind="PencilOutline" VerticalAlignment="Center" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"/>
-
-                        </Button>
-
-
-
                     </Grid>
                 </Border>
-            </Grid>
-        </ScrollViewer>
+            </materialDesign:Card>
 
-        <Grid Grid.Row="4">
+        </Grid>
+
+
+        <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>

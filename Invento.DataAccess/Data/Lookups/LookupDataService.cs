@@ -15,6 +15,15 @@ namespace Invento.DataAccess.Data.Lookups
         {
             _contextcreator = ContextCreator;
         }
+
+        public async Task<IEnumerable<Item>> GetAllAysc()
+        {
+            using (var context = _contextcreator())
+            {
+                return await context.Items.AsNoTracking().ToListAsync();
+            }
+        }
+
         public async Task<IEnumerable<InventoryItemDto>> GetInventoryItemsListAysc()
         {
             using (var context = _contextcreator()) 

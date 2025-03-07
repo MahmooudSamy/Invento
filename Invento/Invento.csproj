@@ -14,8 +14,6 @@
     <Folder Include="Events\" />
     <Folder Include="Converters\" />
     <Folder Include="Interface\" />
-    <Folder Include="Pages\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

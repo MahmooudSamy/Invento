@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Invento.Pages;
+using Invento.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,9 +19,13 @@ namespace Invento
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private MainViewModel _viewmodel;
+
+        public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
+            _viewmodel = mainViewModel;
+            DataContext = _viewmodel;
         }
        
         private void PART_TITLEBAR_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -53,7 +59,7 @@ namespace Invento
 
         private void MainWindow1_Loaded(object sender, RoutedEventArgs e)
         {
-
+            _viewmodel.PageToNavigate = new ListItemsPage(_viewmodel);
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -77,8 +83,6 @@ namespace Invento
             }
         }
 
-     
-
-       
+        
     }
 }

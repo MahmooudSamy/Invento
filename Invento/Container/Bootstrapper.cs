@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Invento.DataAccess;
 using Invento.DataAccess.Data.Lookups;
+using Invento.ViewModels;
 
 namespace Invento.Container
 {
@@ -12,7 +13,7 @@ namespace Invento.Container
 
             bulider.RegisterType<MainWindow>().AsSelf();
 
-
+            bulider.RegisterType<MainViewModel>().AsSelf();
             bulider.RegisterType<InventoryDbContext>().AsSelf();
 
 
@@ -31,7 +32,7 @@ namespace Invento.Container
             ////ViewModel
             //bulider.RegisterType<UserViewModel>().As<IUserViewModel>();
             //bulider.RegisterType<AnswerViewModel>().As<IAnswerViewModel>();
-            //bulider.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
+            bulider.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
             //bulider.RegisterType<NotificationViewModel>().As<INotificationViewModel>();
             //bulider.RegisterType<LogInViewModel>().As<ILogInViewModel>();
             ////ViewModel

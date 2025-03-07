@@ -160,7 +160,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border x:Name="GridMenu" Grid.Column="0" Grid.Row="0"   Grid.RowSpan="7" BorderThickness="2" BorderBrush="#FFF8F8F7" Background="#ffffff">
+            <Border x:Name="GridMenu" Grid.Column="0" Grid.Row="0"   Grid.RowSpan="7" BorderThickness="0 0 0 2" BorderBrush="#FFF8F8F7" Background="#ffffff">
             <Grid  HorizontalAlignment="Left" Width="210" Background="#ffffff" Panel.ZIndex="10">
                     <StackPanel>
                         <Grid  Height="150">
@@ -188,7 +188,7 @@ Style="{DynamicResource MaterialDesignHeadline4TextBlock}" />
                 
             </Border>
 
-            <Grid x:Name="GrdFrame" Background="BlanchedAlmond" Grid.Row="6" Grid.Column="1" >
+            <Grid x:Name="GrdFrame"  Grid.Row="6" Grid.Column="1" >
                 <Frame Grid.Row="1" Grid.RowSpan="2" x:Name="ProjectorFrame" 
                        NavigationUIVisibility="Hidden" Content="{Binding PageToNavigate}" 
                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 

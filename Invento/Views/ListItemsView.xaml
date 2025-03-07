@@ -44,22 +44,28 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="10"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
 
                 <ColumnDefinition Width="*"/>
+                
                 <ColumnDefinition Width="Auto"/>
+                
                 <ColumnDefinition  Width="Auto" MinWidth="10"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition  Width="Auto" MinWidth="10"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="1"  Text="50 Employees" FontSize="18" FontWeight="SemiBold" 
-               Margin="20 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#121518"/>
-            <TextBlock Grid.Column="3"  Text="Search" FontSize="14" FontWeight="SemiBold" 
-               HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#121518"/>
+            <ToggleButton x:Name="BtnIsStock" IsChecked="True" Grid.Column="2" Style="{DynamicResource AnimatedSwitch}" Height="30" Width="190"/>
+            <TextBlock Grid.Column="1"  Text="Outstock" FontSize="14" FontWeight="SemiBold" 
+     HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#121518"/>
+            <TextBlock Grid.Column="3"  Text="Instock" FontSize="14" FontWeight="SemiBold" 
+HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#121518"/>
+            
             <Grid  Grid.Column="5" Width="300" HorizontalAlignment="Right">
 
                 
                 <custom:SearchTextBox x:Name="TxtSearch" Width="250" Height="40"  VerticalContentAlignment="Center" FlowDirection="RightToLeft" 
-                       Hint="Search anything in Transactions" FontSize="14"   SearchMode="Instant"  Search="TxtSearch_Search" />
+                       Hint="Search by Name" FontSize="14"   SearchMode="Instant"  Search="TxtSearch_Search" />
 
             </Grid>
         </Grid>

@@ -1,4 +1,5 @@
 ﻿using Invento.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,13 @@ namespace Invento.DataAccess.Data.Lookups
         {
             _contextcreator = ContextCreator;
         }
-        public Task<IEnumerable<InventoryItemDto>> GetInventoryItemsListAysc()
+        public async Task<IEnumerable<InventoryItemDto>> GetInventoryItemsListAysc()
         {
-            throw new NotImplementedException();
+            using (var context = _contextcreator()) 
+            {
+                return await context.Database.SqlQueryRaw<InventoryItemDto>("EXEC GetQuestionLookup")
+                    .ToListAsync();
+            }
         }
     }
 }

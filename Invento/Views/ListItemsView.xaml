@@ -141,7 +141,6 @@ HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#121518"/>
                                 <ColumnDefinition Width="10"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" HorizontalAlignment="Center" Grid.Column="1" Text="1" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18"/>
-                            <Ellipse Width="30" Height="30" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" Margin="0 0 160 0"  Fill="#FF1B859D"/>
                             <TextBlock Grid.Row="0"  HorizontalAlignment="Center" Grid.Column="3" Text="Mahmoud Samy" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="16"/>
                             <TextBlock  HorizontalAlignment="Left" Grid.Column="3" Text="M" FontWeight="Bold" Foreground="#ffffff"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="18" Margin="12,0,0,0"/>
                             <TextBlock Grid.Row="0"  HorizontalAlignment="Center" Grid.Column="5" Text=".Net Developer" FontWeight="Bold" Foreground="#FF737B83"  TextAlignment="Center" VerticalAlignment="Center"  FontSize="16"/>

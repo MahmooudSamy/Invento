@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Invento.DataAccess;
+using Invento.DataAccess.Data.Lookups;
 
 namespace Invento.Container
 {
@@ -16,7 +17,7 @@ namespace Invento.Container
 
 
             ////services
-            //bulider.RegisterType<LookupDataServices>().AsImplementedInterfaces();
+            bulider.RegisterType<LookupDataService>().AsImplementedInterfaces();
             //bulider.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
 
             ////services

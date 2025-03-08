@@ -25,9 +25,6 @@ namespace Invento.Views
             InitializeComponent();
         }
 
-        private void TxtSearch_Search(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

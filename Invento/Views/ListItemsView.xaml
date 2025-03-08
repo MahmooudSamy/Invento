@@ -29,7 +29,7 @@
             <TextBlock Grid.Column="0" Text="Outstock" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
             <ToggleButton x:Name="BtnIsStock" IsChecked="True" Grid.Column="1" Style="{DynamicResource AnimatedSwitch}" Height="30" Width="190"/>
             <TextBlock Grid.Column="2" Text="Instock" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
-            <custom:SearchTextBox x:Name="TxtSearch" Grid.Column="4" Width="250" Height="40" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Margin="0 0 20 0" Hint="Search by Name" FontSize="14" SearchMode="Instant" Search="TxtSearch_Search"/>
+            <custom:SearchTextBox x:Name="TxtSearch" Text="{Binding SearchKeyWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Width="250" Height="40" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Margin="0 0 20 0" Hint="Search by Name" FontSize="14" SearchMode="Instant" />
         </Grid>
 
         <Grid  Grid.Row="4">

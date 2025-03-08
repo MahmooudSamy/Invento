@@ -24,6 +24,19 @@ namespace Invento.DataAccess.Data.Lookups
             }
         }
 
+        public async Task<IEnumerable<InventoryItemDto>> GetInventoryItemsbyNameAysc(string ItemName)
+        {
+            using (var context = _contextcreator())
+            {
+                return await context.Database.SqlQueryRaw<InventoryItemDto>(
+                "EXEC GetItemsbyName @SearchTerm = {0}",
+                ItemName
+                ).ToListAsync();
+
+            }
+              
+        }
+
         public async Task<IEnumerable<InventoryItemDto>> GetInventoryItemsListAysc()
         {
             using (var context = _contextcreator()) 

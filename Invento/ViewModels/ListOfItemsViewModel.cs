@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Invento.ViewModels
 {
@@ -20,7 +21,11 @@ namespace Invento.ViewModels
             _lookupDataService = lookupDataService;
             _eventAggregator = eventAggregator;
             ItemesCollection = new ObservableCollection<ListOfItemsItemViewModel>();
+            
         }
+
+      
+
         public async Task LoadAllItems()
         {
             try
@@ -57,9 +62,22 @@ namespace Invento.ViewModels
 
         private async void SearchFunction(string searchkeyword)
         {
-
+            try
+            {
+                var items = await _lookupDataService.GetInventoryItemsbyNameAysc (searchkeyword);
+                ItemesCollection.Clear();
+                foreach (var item in items)
+                {
+                    ItemesCollection.Add(new ListOfItemsItemViewModel(item.ItemId, item.ItemName
+                        , item.CategoryName, item.Quantity, item.LastUpdate, _eventAggregator));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-
+        
         public ObservableCollection<ListOfItemsItemViewModel> ItemesCollection { get; }
     }
 }

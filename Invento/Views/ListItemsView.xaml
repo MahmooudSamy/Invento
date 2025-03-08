@@ -17,34 +17,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Items" FontSize="32" FontWeight="SemiBold" Margin="20 0 0 0" VerticalAlignment="Center"/>
-            <Button Grid.Column="1" Style="{DynamicResource StyleOfAddbutton}" FontSize="13" Width="150" Height="40" Margin="0 0 20 0">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="24" Height="24"/>
-                    <TextBlock Text="Add New Item" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-        </Grid>
-
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Outstock" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
-            <ToggleButton x:Name="BtnIsStock" IsChecked="True" Grid.Column="1" Style="{DynamicResource AnimatedSwitch}" Height="30" Width="190"/>
-            <TextBlock Grid.Column="2" Text="Instock" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
-            <custom:SearchTextBox x:Name="TxtSearch" Grid.Column="4" Width="250" Height="40" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Margin="0 0 20 0" Hint="Search by Name" FontSize="14" SearchMode="Instant" Search="TxtSearch_Search"/>
-        </Grid>
-
+       
         <Grid  Grid.Row="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

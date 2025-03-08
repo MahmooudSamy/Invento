@@ -1,16 +1,44 @@
-﻿using System;
+﻿using Invento.DataAccess.Data.Lookups;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows;
 
 namespace Invento.ViewModels
 {
-    public class ListOfItemsViewModel : IListOfItemsViewModel
+    public class ListOfItemsViewModel : ViewModelBase, IListOfItemsViewModel
     {
-        public Task LoadAllItems()
+        private IItemsLookupDataService _lookupDataService;
+        private IEventAggregator _eventAggregator;
+
+        public ListOfItemsViewModel(IItemsLookupDataService lookupDataService,IEventAggregator eventAggregator)
         {
-            throw new NotImplementedException();
+            _lookupDataService = lookupDataService;
+            _eventAggregator = eventAggregator;
+            ItemesCollection = new ObservableCollection<ListOfItemsItemViewModel>();
         }
+        public async Task LoadAllItems()
+        {
+            try
+            {
+                var items = await _lookupDataService.GetInventoryItemsListAysc();
+                ItemesCollection.Clear();
+                foreach (var item in items)
+                {
+                    ItemesCollection.Add(new ListOfItemsItemViewModel(item.ItemId,item.ItemName
+                        ,item.CategoryName,item.Quantity,item.LastUpdate,_eventAggregator));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public ObservableCollection<ListOfItemsItemViewModel> ItemesCollection { get; }
     }
 }

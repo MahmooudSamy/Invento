@@ -14,12 +14,12 @@ namespace Invento.ViewModels
     public class MainViewModel:ViewModelBase
     {
         private Page _pagetonavigate;
-
-
-        public MainViewModel(INavigationViewModel navigationViewModel)
+        private Func<ListOfItemsViewModel> _LookupListItemsviewModelCreator;
+        private ListOfItemsViewModel _listofitemsviewmodel;
+        public MainViewModel(INavigationViewModel navigationViewModel , Func<ListOfItemsViewModel> LookupListItemsviewModelCreator)
         {
             NavigationViewModel = navigationViewModel;
-            
+            _LookupListItemsviewModelCreator = LookupListItemsviewModelCreator;
         }
 
         //public async Task LoadAsync()
@@ -42,6 +42,15 @@ namespace Invento.ViewModels
         }
 
        
+
+        public ListOfItemsViewModel ListOfItemsViewModel
+        {
+            get { return _listofitemsviewmodel; }
+            set { _listofitemsviewmodel = value; OnPropertyChanged(); }
+        }
+
         public INavigationViewModel NavigationViewModel { get; set; }
+
+        
     }
 }

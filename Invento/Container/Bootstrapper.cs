@@ -19,7 +19,7 @@ namespace Invento.Container
 
             ////services
             bulider.RegisterType<LookupDataService>().AsImplementedInterfaces();
-            //bulider.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
+            bulider.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
 
             ////services
 
@@ -33,6 +33,8 @@ namespace Invento.Container
             //bulider.RegisterType<UserViewModel>().As<IUserViewModel>();
             bulider.RegisterType<ListOfItemsViewModel>().As<IListOfItemsViewModel>();
             bulider.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
+            bulider.Register(c => new Func<ListOfItemsViewModel>(c.Resolve<ListOfItemsViewModel>));
+
             //bulider.RegisterType<NotificationViewModel>().As<INotificationViewModel>();
             //bulider.RegisterType<LogInViewModel>().As<ILogInViewModel>();
             ////ViewModel

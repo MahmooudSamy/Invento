@@ -2,13 +2,41 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:custom="clr-namespace:SearchText;assembly=SearchText"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Invento.Pages"
       mc:Ignorable="d" 
       xmlns:view="clr-namespace:Invento.Views"
       Title="ListItemsPage">
 
     <Grid>
-        <view:ListItemsView/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Items" FontSize="32" FontWeight="SemiBold" Margin="20 0 0 0" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Style="{DynamicResource StyleOfAddbutton}" FontSize="13" Width="150" Height="40" Margin="0 0 20 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="24" Height="24"/>
+                    <TextBlock Text="Add New Item" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+      
+
+        
+        <view:ListItemsView Grid.Row="4"/>
     </Grid>
 </Page>

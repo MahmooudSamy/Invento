@@ -13,7 +13,7 @@ namespace Invento.Model
 
         [Required]
         [MaxLength(50)]
-        public required string InventoryName { get; set; }
+        public  string InventoryName { get; set; }
 
         public virtual ICollection<InventoryItem>  InventoryItems { get; set; }
     }

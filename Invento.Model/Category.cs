@@ -13,7 +13,7 @@ namespace Invento.Model
 
         [Required]
         [MaxLength(50)]
-        public required string CategoryName { get; set; }
+        public  string CategoryName { get; set; }
         public virtual ICollection<Item> Items { get; set; }
     }
 }

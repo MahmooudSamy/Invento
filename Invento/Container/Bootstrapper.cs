@@ -35,8 +35,8 @@ namespace Invento.Container
             bulider.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
 
 
-          
-            //bulider.RegisterType<LogInViewModel>().As<ILogInViewModel>();
+            bulider.RegisterType<ItemViewModel>().As<IItemViewModel>();
+            bulider.RegisterType<InventoryItemViewModel>().As<IInventoryItemViewModel>();
             ////ViewModel
 
             return bulider.Build();

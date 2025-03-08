@@ -64,7 +64,7 @@ BorderThickness="0 0 0 5"  Grid.Row="0"   Grid.ColumnSpan="8"  >
 
                 </Grid>
             </materialDesign:Card>
-            <Grid  x:Name="GrdItem" Grid.Row="1"   Grid.ColumnSpan="8" MaxHeight="200">
+            <Grid  x:Name="GrdItem" Grid.Row="1"   Grid.ColumnSpan="8" MaxHeight="300">
                 <ScrollViewer   Grid.ColumnSpan="6"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <ItemsControl Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="7" ItemsSource="{Binding ItemesCollection}" >
                         <ItemsControl.ItemTemplate>

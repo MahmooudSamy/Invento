@@ -48,9 +48,9 @@ namespace Invento
             WindowState = WindowState.Minimized;
         }
 
-        private void MainWindow1_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow1_Loaded(object sender, RoutedEventArgs e)
         {
-            _viewmodel.PageToNavigate = new ListItemsPage(_viewmodel);
+           await _viewmodel.LoadAsync();
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

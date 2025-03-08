@@ -23,8 +23,8 @@ namespace Invento.ViewModels
         }
         public async Task LoadAllItems()
         {
-            try
-            {
+            //try
+            //{
                 var items = await _lookupDataService.GetInventoryItemsListAysc();
                 ItemesCollection.Clear();
                 foreach (var item in items)
@@ -32,11 +32,11 @@ namespace Invento.ViewModels
                     ItemesCollection.Add(new ListOfItemsItemViewModel(item.ItemId,item.ItemName
                         ,item.CategoryName,item.Quantity,item.LastUpdate,_eventAggregator));
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         public ObservableCollection<ListOfItemsItemViewModel> ItemesCollection { get; }

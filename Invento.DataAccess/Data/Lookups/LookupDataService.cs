@@ -28,8 +28,9 @@ namespace Invento.DataAccess.Data.Lookups
         {
             using (var context = _contextcreator()) 
             {
-                return await context.Database.SqlQueryRaw<InventoryItemDto>("EXEC GetQuestionLookup")
+                var item= await context.Database.SqlQueryRaw<InventoryItemDto>("EXEC GetItems")
                     .ToListAsync();
+                return item;
             }
         }
     }

@@ -34,9 +34,9 @@
             </Button>
         </Grid>
 
-      
 
-        
-        <view:ListItemsView Grid.Row="4"/>
+
+
+        <view:ListItemsView Grid.Row="4" DataContext="{Binding ListOfItemsViewModel}"/>
     </Grid>
 </Page>

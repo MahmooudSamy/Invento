@@ -64,40 +64,66 @@ BorderThickness="0 0 0 5"  Grid.Row="0"   Grid.ColumnSpan="8"  >
 
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card Grid.Row="1"   Grid.ColumnSpan="8"  >
-                <Border Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="7"  >
-                    <Grid Background="White">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="110"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="1" Width="10" Grid.Row="0" Grid.Column="0"  FontSize="20" TextWrapping="Wrap" TextAlignment="Left"  Foreground="#FF343434"   Style="{DynamicResource MaterialDesignDisplay2TextBlock}" Margin="70,0"/>
-                        <TextBlock Text="qnp bank" Width="150" Grid.Row="0" Grid.Column="1"  FontSize="20"   TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center"  Foreground="#FF343434"  Style="{DynamicResource MaterialDesignBody2TextBlock  }" Margin="0,6"/>
-                        <TextBlock Text="Checking" Width="150" Grid.Row="0" Grid.Column="2" FontSize="20"   TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center" Foreground="#FF343434"  Style="{DynamicResource TextBlockStyle1}" Margin="0,7,0,6"   />
-                        <TextBlock Text="4000" Width="150" Grid.Row="0" Grid.Column="3"  FontSize="20" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434"  Grid.ColumnSpan="2"   />
-                        <TextBlock Text="EGP" Width="150" Grid.Row="0" Grid.Column="5"    FontSize="20" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434"    />
+            <Grid  x:Name="GrdItem" Grid.Row="1"   Grid.ColumnSpan="8" MaxHeight="200">
+                <ScrollViewer   Grid.ColumnSpan="6"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <ItemsControl Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="7" ItemsSource="{Binding ItemesCollection}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="GrdData" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <materialDesign:Card Grid.Row="1"   Grid.ColumnSpan="8"  >
+                                        <Border Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="7"  >
+                                            <Grid Background="White">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="150"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="110"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="150"/>
+                                                    <ColumnDefinition Width="300"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Text="{Binding ItemId}" Width="10" Grid.Row="0" Grid.Column="0"  FontSize="20" TextWrapping="Wrap" TextAlignment="Left"  Foreground="#FF343434"   Style="{DynamicResource MaterialDesignDisplay2TextBlock}" Margin="70,0"/>
+                                                <TextBlock Text="{Binding ItemName}" Width="150" Grid.Row="0" Grid.Column="1"  FontSize="20"   TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center"  Foreground="#FF343434"  Style="{DynamicResource MaterialDesignBody2TextBlock  }" Margin="0,6"/>
+                                                <TextBlock Text="{Binding CategoryName}" Width="150" Grid.Row="0" Grid.Column="2" FontSize="20"   TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center" Foreground="#FF343434"  Style="{DynamicResource TextBlockStyle1}" Margin="0,7,0,6"   />
+                                                <TextBlock Text="{Binding Quantity}" Width="150" Grid.Row="0" Grid.Column="3"  FontSize="20" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434"  Grid.ColumnSpan="2"   />
+                                                <TextBlock Text="{Binding LastUpdate}" Width="150" Grid.Row="0" Grid.Column="5"    FontSize="20" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434"    />
 
-                        <Button   Style="{DynamicResource StyleOfSideMenueButton}" Width="40" Grid.Row="0" Grid.Column="6" Height="30"   Margin="20,0,56,0" >
-                            <materialDesign:PackIcon Kind="ViewArrowLeftOutline" ToolTip="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
-                        </Button>
-                        <Button  Style="{DynamicResource StyleOfSideMenueButton}" Width="40"  Grid.Row="0" Grid.Column="6" FontSize="20"  Foreground="#FF343434" FontWeight="Bold"  Margin="0,0,20,0"  HorizontalAlignment="Right" >
-                            <materialDesign:PackIcon Kind="Edit" ToolTip="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
+                                                <Button   Style="{DynamicResource StyleOfSideMenueButton}" Width="40" Grid.Row="0" Grid.Column="6" Height="30"   Margin="20,0,56,0" >
+                                                    <materialDesign:PackIcon Kind="ViewArrowLeftOutline" ToolTip="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
+                                                </Button>
+                                                <Button  Style="{DynamicResource StyleOfSideMenueButton}" Width="40"  Grid.Row="0" Grid.Column="6" FontSize="20"  Foreground="#FF343434" FontWeight="Bold"  Margin="0,0,20,0"  HorizontalAlignment="Right" >
+                                                    <materialDesign:PackIcon Kind="Edit" ToolTip="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
 
-                        </Button>
-                    </Grid>
-                </Border>
-            </materialDesign:Card>
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </materialDesign:Card>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+          
 
         </Grid>
 

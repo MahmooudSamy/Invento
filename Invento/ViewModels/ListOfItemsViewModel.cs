@@ -23,20 +23,41 @@ namespace Invento.ViewModels
         }
         public async Task LoadAllItems()
         {
-            //try
-            //{
+            try
+            {
                 var items = await _lookupDataService.GetInventoryItemsListAysc();
                 ItemesCollection.Clear();
                 foreach (var item in items)
                 {
-                    ItemesCollection.Add(new ListOfItemsItemViewModel(item.ItemId,item.ItemName
-                        ,item.CategoryName,item.Quantity,item.LastUpdate,_eventAggregator));
+                    ItemesCollection.Add(new ListOfItemsItemViewModel(item.ItemId, item.ItemName
+                        , item.CategoryName, item.Quantity, item.LastUpdate, _eventAggregator));
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private string _searchkeyword;
+
+        public string SearchKeyWord
+        {
+            get { return _searchkeyword; }
+            set
+            {
+                _searchkeyword = value;
+                OnPropertyChanged();
+                if (_searchkeyword == value)
+                {
+                    SearchFunction(_searchkeyword);
+                }
+            }
+        }
+
+        private async void SearchFunction(string searchkeyword)
+        {
+
         }
 
         public ObservableCollection<ListOfItemsItemViewModel> ItemesCollection { get; }

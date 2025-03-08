@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Invento.DataAccess;
 using Invento.DataAccess.Data.Lookups;
+using Invento.DataAccess.Data.Repositories;
 using Invento.ViewModels;
 
 namespace Invento.Container
@@ -24,18 +25,17 @@ namespace Invento.Container
             ////services
 
             ////repo
-            //bulider.RegisterType<UserReposetry>().As<IUserReposetry>();
-            //bulider.RegisterType<QuestionsReposetry>().As<IQuestionsReposetry>();
-            //bulider.RegisterType<AnswerReposetry>().As<IAnswerReposetry>();
+            bulider.RegisterType<InventoryItemRepository>().As<IInventoryItemRepository>();
+            bulider.RegisterType<ItemRepository>().As<IItemRepository>();
             ////repo
 
             ////ViewModel
-            //bulider.RegisterType<UserViewModel>().As<IUserViewModel>();
+
             bulider.RegisterType<ListOfItemsViewModel>().As<IListOfItemsViewModel>();
             bulider.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
-            //bulider.Register(c => new Func<ListOfItemsViewModel>(c.Resolve<ListOfItemsViewModel>));
 
-            //bulider.RegisterType<NotificationViewModel>().As<INotificationViewModel>();
+
+          
             //bulider.RegisterType<LogInViewModel>().As<ILogInViewModel>();
             ////ViewModel
 

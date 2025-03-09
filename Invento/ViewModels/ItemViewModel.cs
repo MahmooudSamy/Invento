@@ -46,16 +46,21 @@ namespace Invento.ViewModels
 
         private async void OnSaveExecute()
         {
-            try
-            {
+            //try
+            //{
+              
                 await _itemRepository.SaveAsync();
                 HasChanges = _itemRepository.HasChanges();
-                _eventAggregator.GetEvent<SendIdEvent>().Publish(ItemWrapper.Id);
-            }
-            catch (Exception ex)
+            _eventAggregator.GetEvent<SendIdEvent>().Publish(new SendIdEventArgs
             {
-                MessageBox.Show(ex.Message);
-            }
+                ItemID = ItemWrapper.Id,
+                Quantity = Quantity
+            });
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
        
@@ -69,7 +74,7 @@ namespace Invento.ViewModels
             if (ItemWrapper.Id == 0)
             {
                 ItemWrapper.ItemName = "";
-               
+                
             }
 
         }
@@ -115,6 +120,13 @@ namespace Invento.ViewModels
                 }
 
             }
+        }
+        private int _quantity;
+
+        public int Quantity
+        {
+            get { return _quantity; }
+            set { _quantity = value; OnPropertyChanged(); }
         }
 
         public ItemWrapper ItemWrapper

@@ -26,17 +26,17 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Add New Item" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 20"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Item Name:" VerticalAlignment="Center" Margin="5"/>
-        <TextBox materialDesign:TextFieldAssist.UnderlineBrush="#FFFFCA40" Grid.Row="1" MinWidth="300" Grid.Column="1" Text="{Binding ItemWrapper.ItemName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" Margin="5"/>
+        <TextBox materialDesign:TextFieldAssist.UnderlineBrush="#FFFFCA40" Grid.Row="1" MinWidth="300" Grid.Column="1" Text="{Binding ItemWrapper.ItemName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left" Margin="5"/>
         <TextBlock  Grid.Row="3" Grid.Column="0" Text="Category:" VerticalAlignment="Center" Margin="5"/>
 
-        <ComboBox Grid.Row="3" MinWidth="300" Grid.Column="1" Margin="5" materialDesign:TextFieldAssist.UnderlineBrush="#FFFFCA40"
+        <ComboBox x:Name="ComboCategory" Grid.Row="3" MinWidth="300" Grid.Column="1" Margin="5" materialDesign:TextFieldAssist.UnderlineBrush="#FFFFCA40"
                    BorderBrush="{DynamicResource MaterialDesignDivider}"   materialDesign:HintAssist.Hint="Choose a Category"
                   ItemsSource="{Binding CategoriesCollection}" DisplayMemberPath="CategoryName" 
-                  SelectedValuePath="CategoryId" SelectedValue="{Binding CategoryWrapper.Id,Mode=TwoWay}"/>
+                  SelectedValuePath="CategoryId" SelectedValue="{Binding ItemWrapper.CategoryId,Mode=TwoWay}" SelectionChanged="ComboCategory_SelectionChanged"/>
         
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Quantity:" VerticalAlignment="Center" Margin="5"/>
-        <TextBox materialDesign:TextFieldAssist.UnderlineBrush="#FFFFCA40" MinWidth="300" Grid.Row="5" Grid.Column="1" Text="10" TextAlignment="Center" Margin="5"/>
+        <TextBox materialDesign:TextFieldAssist.UnderlineBrush="#FFFFCA40" MinWidth="300" Grid.Row="5" Grid.Column="1" Text="{Binding Quantity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  Margin="5"/>
 
-        <Button Background="#FFFFCA40" BorderThickness="0" Grid.Row="7" Grid.Column="1"  Content="Save" Width="300"  HorizontalAlignment="Center"/>
+        <Button Background="#FFFFCA40" BorderThickness="0" Grid.Row="7" Grid.Column="1"  Content="Save" Width="300"  HorizontalAlignment="Center" Command="{Binding SaveCommand}"/>
     </Grid>
 </UserControl>

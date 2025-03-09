@@ -8,7 +8,7 @@ namespace Invento.ViewModels
 {
     public interface IInventoryItemViewModel
     {
-        Task AddEditInventoryItem(int? itemId);
+        Task AddEditInventoryItem(int? itemId, int quantity);
         bool HasChanges { get; set; }
     }
 }

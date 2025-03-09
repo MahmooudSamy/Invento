@@ -24,5 +24,10 @@ namespace Invento.Views
         {
             InitializeComponent();
         }
+
+        private void ComboCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MessageBox.Show(ComboCategory.SelectedValue.ToString());
+        }
     }
 }

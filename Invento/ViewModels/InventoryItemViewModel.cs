@@ -46,8 +46,10 @@ namespace Invento.ViewModels
 
        
 
-        public async Task AddEditInventoryItem(int? itemId)
+        public async Task AddEditInventoryItem(int? itemId,int quantity)
         {
+            Quantity = quantity;
+            ItemId = itemId.Value;
             var item = itemId.HasValue
                ? await _inventoryItemRepository.GetInventoryItemAsyncById(itemId.Value)
                : CreateNewItem();
@@ -62,6 +64,10 @@ namespace Invento.ViewModels
         private void InitilaizeItem(InventoryItem item)
         {
             InventoryItemWrapper = new InventoryItemWrapper(item);
+            InventoryItemWrapper.ItemId = ItemId;
+            InventoryItemWrapper.InventoryId = 1;
+            InventoryItemWrapper.Quantity = Quantity;
+            InventoryItemWrapper.LastUpdate = DateTime.Now;
             InventoryItemWrapper.PropertyChanged += (s, e) =>
             {
                 if (!HasChanges)
@@ -104,7 +110,20 @@ namespace Invento.ViewModels
 
             }
         }
+        private int _quantity;
 
+        public int Quantity
+        {
+            get { return _quantity; }
+            set { _quantity = value; OnPropertyChanged(); }
+        }
+        private int _itemId;
+
+        public int ItemId
+        {
+            get { return _itemId; }
+            set { _itemId = value; OnPropertyChanged(); }
+        }
         public ICommand  SaveCommand { get; }
     }
 }

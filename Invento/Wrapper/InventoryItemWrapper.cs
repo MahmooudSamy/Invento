@@ -13,9 +13,17 @@ namespace Invento.Wrapper
         {
                 
         }
-        public int Id { get { return Model.ItemId; } }
-        public int InventoryId { get { return Model.InventoryId; } }
-
+       
+        public int ItemId
+        {
+            get { return GetValue<int>(); }
+            set { SetValue(value); }
+        }
+        public int InventoryId
+        {
+            get { return GetValue<int>(); }
+            set { SetValue(value); }
+        }
         public int Quantity
         {
             get { return GetValue<int>(); }

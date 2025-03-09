@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Invento.Events
 {
-    public class SendIdEvent: PubSubEvent<int>
+    public class SendIdEvent: PubSubEvent<SendIdEventArgs>
     {
+    }
+
+    public class SendIdEventArgs
+    {
+        public int ItemID { get; set; }
+        public int Quantity { get; set; }
     }
 }

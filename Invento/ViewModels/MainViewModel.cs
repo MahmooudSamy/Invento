@@ -1,4 +1,5 @@
 ﻿using Invento.DataAccess.Data.Lookups;
+using Invento.Events;
 using Invento.Model;
 using Invento.Pages;
 using System;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace Invento.ViewModels
 {
-    public class MainViewModel:ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         private Page _pagetonavigate;
         private Func<IListOfItemsViewModel> _LookupListItemsviewModelCreator;
@@ -21,29 +22,44 @@ namespace Invento.ViewModels
         private IListOfItemsViewModel _listofitemsviewmodel;
         private IItemViewModel _itemviewmodel;
         private IInventoryItemViewModel _inventoryviewmodel;
-        public MainViewModel(INavigationViewModel navigationViewModel , 
+        private IEventAggregator _eventAggregator;
+        public MainViewModel(INavigationViewModel navigationViewModel,
             Func<IListOfItemsViewModel> LookupListItemsviewModelCreator,
-            Func<IItemViewModel> ItemViewModelCreator,Func<IInventoryItemViewModel> InventoryViewModelCreator)
+            Func<IItemViewModel> ItemViewModelCreator, Func<IInventoryItemViewModel> InventoryViewModelCreator,
+            IEventAggregator eventAggregator)
         {
             NavigationViewModel = navigationViewModel;
+            _eventAggregator = eventAggregator;
             _LookupListItemsviewModelCreator = LookupListItemsviewModelCreator;
             _ItemViewModelCreator = ItemViewModelCreator;
             _InventoryViewModelCreator = InventoryViewModelCreator;
             OpenNewItem = new DelegateCommand(OnOpenNewItemExceute);
+            _eventAggregator.GetEvent<SendIdEvent>().Subscribe(OnSendDataToInventoryItemExecute);
+        }
+
+        private void OnSendDataToInventoryItemExecute(SendIdEventArgs ItemData)
+        {
+            InventoryItemViewModel = _InventoryViewModelCreator();
+            if (ItemData.ItemID != 0)
+            {
+                InventoryItemViewModel.AddEditInventoryItem(ItemData.ItemID, ItemData.Quantity);
+            }
+
+
         }
 
         private void OnOpenNewItemExceute()
         {
             ItemViewModel = _ItemViewModelCreator();
             ItemViewModel.AddEditInventoryItem(null);
-            PageToNavigate = new AddEditItem (this);
+            PageToNavigate = new AddEditItem(this);
         }
 
         public async Task LoadAsync()
         {
             ListOfItemsViewModel = _LookupListItemsviewModelCreator();
             await ListOfItemsViewModel.LoadAllItems();
-            
+
             PageToNavigate = new ListItemsPage(this);
         }
 
@@ -54,13 +70,13 @@ namespace Invento.ViewModels
         }
 
 
-       
+
         public IItemViewModel ItemViewModel
         {
             get { return _itemviewmodel; }
             set { _itemviewmodel = value; OnPropertyChanged(); }
         }
-       
+
 
         public IInventoryItemViewModel InventoryItemViewModel
         {
@@ -76,6 +92,8 @@ namespace Invento.ViewModels
 
         public INavigationViewModel NavigationViewModel { get; set; }
 
-        public ICommand  OpenNewItem { get;  }
+        public ICommand OpenNewItem { get; }
+
+
     }
 }

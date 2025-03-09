@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Invento.ViewModels
 {
@@ -15,19 +16,28 @@ namespace Invento.ViewModels
     {
         private Page _pagetonavigate;
         private Func<IListOfItemsViewModel> _LookupListItemsviewModelCreator;
+        private Func<IItemViewModel> _ItemViewModelCreator;
+        private Func<IInventoryItemViewModel> _InventoryViewModelCreator;
         private IListOfItemsViewModel _listofitemsviewmodel;
-        public MainViewModel(INavigationViewModel navigationViewModel , Func<IListOfItemsViewModel> LookupListItemsviewModelCreator)
+        private IItemViewModel _itemviewmodel;
+        private IInventoryItemViewModel _inventoryviewmodel;
+        public MainViewModel(INavigationViewModel navigationViewModel , 
+            Func<IListOfItemsViewModel> LookupListItemsviewModelCreator,
+            Func<IItemViewModel> ItemViewModelCreator,Func<IInventoryItemViewModel> InventoryViewModelCreator)
         {
             NavigationViewModel = navigationViewModel;
             _LookupListItemsviewModelCreator = LookupListItemsviewModelCreator;
+            _ItemViewModelCreator = ItemViewModelCreator;
+            _InventoryViewModelCreator = InventoryViewModelCreator;
+            OpenNewItem = new DelegateCommand(OnOpenNewItemExceute);
         }
 
-        //public async Task LoadAsync()
-        //{
-        //    UserAccountViewModel = null;
-        //    LogInViewModel = _loginViewModelCreator();
-        //    await NavigationViewModel.LoadAsync();
-        //}
+        private void OnOpenNewItemExceute()
+        {
+            ItemViewModel = _ItemViewModelCreator();
+            ItemViewModel.AddEditInventoryItem(null);
+            PageToNavigate = new AddEditItem (this);
+        }
 
         public async Task LoadAsync()
         {
@@ -43,7 +53,20 @@ namespace Invento.ViewModels
             set { _pagetonavigate = value; OnPropertyChanged(); }
         }
 
+
        
+        public IItemViewModel ItemViewModel
+        {
+            get { return _itemviewmodel; }
+            set { _itemviewmodel = value; OnPropertyChanged(); }
+        }
+       
+
+        public IInventoryItemViewModel InventoryItemViewModel
+        {
+            get { return _inventoryviewmodel; }
+            set { _inventoryviewmodel = value; OnPropertyChanged(); }
+        }
 
         public IListOfItemsViewModel ListOfItemsViewModel
         {
@@ -53,6 +76,6 @@ namespace Invento.ViewModels
 
         public INavigationViewModel NavigationViewModel { get; set; }
 
-        
+        public ICommand  OpenNewItem { get;  }
     }
 }

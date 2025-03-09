@@ -65,6 +65,7 @@ namespace Invento.ViewModels
                 ? await _itemRepository.GetAsyncById(itemId.Value)
                 : CreateNewItem();
             InitilaizeItem(item);
+            await LoadCategoryAsync();
             if (ItemWrapper.Id == 0)
             {
                 ItemWrapper.ItemName = "";
@@ -120,6 +121,13 @@ namespace Invento.ViewModels
         {
             get { return _itemWrapper; }
             set { _itemWrapper = value; OnPropertyChanged(); }
+        }
+        private CategoryWrapper _categorywrapper;
+
+        public CategoryWrapper CategoryWrapper
+        {
+            get { return _categorywrapper; }
+            set { _categorywrapper = value; OnPropertyChanged(); }
         }
 
         public ICommand SaveCommand { get; }

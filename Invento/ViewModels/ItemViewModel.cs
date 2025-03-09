@@ -1,9 +1,11 @@
-﻿using Invento.DataAccess.Data.Repositories;
+﻿using Invento.DataAccess.Data.Lookups;
+using Invento.DataAccess.Data.Repositories;
 using Invento.Events;
 using Invento.Model;
 using Invento.Wrapper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +18,27 @@ namespace Invento.ViewModels
     {
         private IItemRepository _itemRepository;
         private IEventAggregator _eventAggregator;
+        private ICategoriesLookup _categoriesLookup;
         private ItemWrapper _itemWrapper;
-        public ItemViewModel(IItemRepository itemRepository,IEventAggregator eventAggregator)
+        public ItemViewModel(IItemRepository itemRepository, ICategoriesLookup categoriesLookup
+            , IEventAggregator eventAggregator)
         {
             _itemRepository = itemRepository;
             _eventAggregator = eventAggregator;
+            _categoriesLookup = categoriesLookup;
             SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
+            CategoriesCollection = new ObservableCollection<CategoryDto>();
         }
+        private async Task LoadCategoryAsync()
+        {
+            CategoriesCollection.Clear();
+            var lookup = await _categoriesLookup.GetCategoryList();
+            foreach (var item in lookup)
+            {
 
+                CategoriesCollection.Add(item);
+            }
+        }
         private bool OnSaveCanExecute()
         {
             return ItemWrapper != null && !ItemWrapper.HasErrors && HasChanges;
@@ -108,6 +123,6 @@ namespace Invento.ViewModels
         }
 
         public ICommand SaveCommand { get; }
-
+        public ObservableCollection<CategoryDto> CategoriesCollection { get; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Invento.DataAccess.Data.Lookups
 {
-    public class LookupDataService : IItemsLookupDataService
+    public class LookupDataService : IItemsLookupDataService,ICategoriesLookup
     {
         private Func<InventoryDbContext> _contextcreator;
         public LookupDataService(Func<InventoryDbContext> ContextCreator)
@@ -21,6 +21,18 @@ namespace Invento.DataAccess.Data.Lookups
             using (var context = _contextcreator())
             {
                 return await context.Items.AsNoTracking().ToListAsync();
+            }
+        }
+
+        public async Task<IEnumerable<CategoryDto>> GetCategoryList()
+        {
+            using (var context = _contextcreator())
+            {
+                return await context.Categories.AsNoTracking().Select(q => new CategoryDto
+                {
+                    CategoryId = q.CategoryId,
+                    CategoryName = q.CategoryName
+                }).ToListAsync();
             }
         }
 

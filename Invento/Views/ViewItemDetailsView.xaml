@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Invento.Views.ViewItemDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Invento.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             >
+    <materialDesign:Card BorderBrush="#E0E0E0"
+BorderThickness="3" UniformCornerRadius="5" MaxHeight="300" MaxWidth="300">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button  Foreground="#FFACABAB" Grid.Row="0" Grid.Column="1"  Style="{DynamicResource StyleofClose}" Margin="0,0,1,0" >
+                <materialDesign:PackIcon Kind="Close" VerticalContentAlignment="Center" 
+                             HorizontalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="32" Height="32"/>
+            </Button>
+           
+            
+            <Grid  Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Item Details" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 20"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Item ID:" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Grid.Row="1" Width="200" TextAlignment="Left"  Grid.Column="1" Text="{Binding ItemId}" Margin="5"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Item Name:" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Grid.Row="2" Width="200"  Grid.Column="1" TextAlignment="Left" Text="{Binding ItemName}" Margin="5"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Category:" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Grid.Row="3" Width="200"  Grid.Column="1" Text="{Binding CategorName}" Margin="5"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0"  Text="Quantity:" VerticalAlignment="Center" Margin="5"/>
+            <TextBlock Grid.Row="4" Width="200" Grid.Column="1" Text="{Binding Quantity}" Margin="5"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Last Update:" VerticalAlignment="Center" Margin="5"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding LastUpdate, StringFormat=G}" Margin="5"/>
+
+
+        </Grid>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

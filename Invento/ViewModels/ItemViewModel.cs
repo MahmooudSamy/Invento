@@ -126,6 +126,14 @@ namespace Invento.ViewModels
             return item;
         }
 
+        public void ViewItemDetails(int itemId, string itemName, string CategoryName, int quantity, DateTime lastUpdate)
+        {
+            ItemId = itemId;
+           ItemName=itemName;
+            CategorName = CategoryName;
+            Quantity = quantity;
+            LastUpdate = lastUpdate;
+        }
 
         private bool _haschanges;
 
@@ -155,6 +163,22 @@ namespace Invento.ViewModels
                 Validate();
             }
         }
+        private DateTime _lastupdate;
+
+        public DateTime LastUpdate
+        {
+            get { return _lastupdate; }
+            set { _lastupdate = value; OnPropertyChanged(); }
+        }
+
+        private int _itemId;
+
+        public int ItemId
+        {
+            get { return _itemId; }
+            set { _itemId = value; OnPropertyChanged(); }
+        }
+
         private EventState _eventstate;
 
         public EventState EventState
@@ -168,14 +192,21 @@ namespace Invento.ViewModels
             get { return _itemWrapper; }
             set { _itemWrapper = value; OnPropertyChanged(); }
         }
-        private CategoryWrapper _categorywrapper;
+        private string _categorname;
 
-        public CategoryWrapper CategoryWrapper
+        public string CategorName
         {
-            get { return _categorywrapper; }
-            set { _categorywrapper = value; OnPropertyChanged(); }
+            get { return _categorname; }
+            set { _categorname = value; OnPropertyChanged(); }
         }
 
+        private string _itemName;
+
+        public string ItemName
+        {
+            get { return _itemName; }
+            set { _itemName = value; OnPropertyChanged(); }
+        }
         public ICommand SaveCommand { get; }
         public ObservableCollection<CategoryDto> CategoriesCollection { get; }
     }

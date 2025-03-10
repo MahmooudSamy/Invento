@@ -16,6 +16,8 @@
                 <ResourceDictionary Source="ResourceDictianary/BtnStyleForSideMenu.xaml"/>
                 <ResourceDictionary Source="ResourceDictianary/BtnStyleForAdd.xaml"/>
                 <ResourceDictionary Source="ResourceDictianary/ToggleBtnStyle.xaml"/>
+                <ResourceDictionary Source="ResourceDictianary/StyleForCloseBtn.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

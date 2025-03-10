@@ -37,6 +37,14 @@ namespace Invento.ViewModels
             _eventAggregator.GetEvent<SendIdEvent>().Subscribe(OnSendDataToInventoryItemExecute);
             _eventAggregator.GetEvent<OpenListPageEvent>().Subscribe(OnOpenPageExecute);
             _eventAggregator.GetEvent<SendDataForEditeEvent>().Subscribe(OnEditItemExcute);
+            _eventAggregator.GetEvent<SendItemDataForViewDetailsEvent>().Subscribe(OnViewItemDetailsExecute);
+        }
+
+        private void OnViewItemDetailsExecute(SendItemDataForViewDetailsEventArgs ItemData)
+        {
+            ItemViewModel = _ItemViewModelCreator();
+            ItemViewModel.ViewItemDetails(ItemData.ItemId, ItemData.ItemName, 
+               ItemData.CategoryName,ItemData.Quantity,ItemData.LastUpdate);
         }
 
         private void OnEditItemExcute(SendDataForEditeEventArgs ItemData)

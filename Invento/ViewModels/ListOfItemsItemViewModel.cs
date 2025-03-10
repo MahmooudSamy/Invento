@@ -34,7 +34,14 @@ namespace Invento.ViewModels
 
         private void OnViewCommand()
         {
-            MessageBox.Show("view");
+            _eventAggregator.GetEvent<SendItemDataForViewDetailsEvent>().Publish(new SendItemDataForViewDetailsEventArgs
+            {
+                ItemId=ItemId,
+                CategoryName=CategoryName,
+                ItemName=ItemName,
+                Quantity=Quantity,
+                LastUpdate=LastUpdate
+            });
         }
 
         private void OnEditeExecute()

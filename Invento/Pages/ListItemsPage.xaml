@@ -6,37 +6,48 @@
        xmlns:custom="clr-namespace:SearchText;assembly=SearchText"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Invento.Pages"
+      
+       xmlns:viewModel="clr-namespace:Invento.ViewModels"
       mc:Ignorable="d" 
       xmlns:view="clr-namespace:Invento.Views"
       Title="ListItemsPage">
-
+    <Page.Resources>
+        <DataTemplate DataType="{x:Type viewModel:ItemViewModel}">
+            <view:ViewItemDetailsView/>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Items" FontSize="32" FontWeight="SemiBold" Margin="20 0 0 0" VerticalAlignment="Center"/>
-            <Button Grid.Column="1" Background="#FFFFCA40" BorderThickness="0" FontSize="13" Width="150" Height="40" Margin="0 0 20 0" Command="{Binding OpenNewItem}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="24" Height="24"/>
-                    <TextBlock Text="Add New Item" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Items" FontSize="32" FontWeight="SemiBold" Margin="20 0 0 0" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Background="#FFFFCA40" BorderThickness="0" FontSize="13" Width="150" Height="40" Margin="0 0 20 0" Command="{Binding OpenNewItem}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="24" Height="24"/>
+                        <TextBlock Text="Add New Item" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+
+
+
+            <view:ListItemsView Grid.Row="4" DataContext="{Binding ListOfItemsViewModel}"/>
+
         </Grid>
-
-
-
-
-        <view:ListItemsView Grid.Row="4" DataContext="{Binding ListOfItemsViewModel}"/>
+        <ContentControl x:Name="ViewItemDetails"  Grid.Row="0" Content="{Binding ItemViewModel}"/>
     </Grid>
+    
 </Page>

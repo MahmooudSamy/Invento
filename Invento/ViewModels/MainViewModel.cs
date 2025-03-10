@@ -35,6 +35,15 @@ namespace Invento.ViewModels
             _InventoryViewModelCreator = InventoryViewModelCreator;
             OpenNewItem = new DelegateCommand(OnOpenNewItemExceute);
             _eventAggregator.GetEvent<SendIdEvent>().Subscribe(OnSendDataToInventoryItemExecute);
+            _eventAggregator.GetEvent<OpenListPageEvent>().Subscribe(OnOpenPageExecute);
+        }
+
+        private async void OnOpenPageExecute(bool IsOpen)
+        {
+           if(IsOpen)
+            {
+                await LoadAsync();
+            }
         }
 
         private void OnSendDataToInventoryItemExecute(SendIdEventArgs ItemData)
@@ -42,7 +51,7 @@ namespace Invento.ViewModels
             InventoryItemViewModel = _InventoryViewModelCreator();
             if (ItemData.ItemID != 0)
             {
-                InventoryItemViewModel.AddEditInventoryItem(ItemData.ItemID, ItemData.Quantity);
+                InventoryItemViewModel.AddEditInventoryItem(null,ItemData.ItemID, ItemData.Quantity);
             }
 
 

@@ -34,9 +34,15 @@ namespace Invento.ViewModels
         {
             try
             {
+                InventoryItemWrapper.ItemId = ItemId;
+                InventoryItemWrapper.InventoryId = 1;
+                InventoryItemWrapper.Quantity = Quantity;
+                InventoryItemWrapper.LastUpdate = DateTime.Now;
+
                 await _inventoryItemRepository.SaveAsync();
                 HasChanges = _inventoryItemRepository.HasChanges();
-                
+
+                _eventAggregator.GetEvent<OpenListPageEvent>().Publish(true);
             }
             catch (Exception ex)
             {
@@ -46,28 +52,25 @@ namespace Invento.ViewModels
 
        
 
-        public async Task AddEditInventoryItem(int? itemId,int quantity)
+        public async Task AddEditInventoryItem(int? itemId,int itemIdSending, int quantity)
         {
             Quantity = quantity;
-            ItemId = itemId.Value;
+            ItemId = itemIdSending;
             var item = itemId.HasValue
                ? await _inventoryItemRepository.GetInventoryItemAsyncById(itemId.Value)
                : CreateNewItem();
+           
             InitilaizeItem(item);
-            //if (InventoryItemWrapper.Id == 0)
-            //{
-            //    InventoryItemWrapper.ItemName = "";
-
-            //}
+            OnSaveExecute();
         }
 
         private void InitilaizeItem(InventoryItem item)
         {
             InventoryItemWrapper = new InventoryItemWrapper(item);
-            InventoryItemWrapper.ItemId = ItemId;
-            InventoryItemWrapper.InventoryId = 1;
-            InventoryItemWrapper.Quantity = Quantity;
-            InventoryItemWrapper.LastUpdate = DateTime.Now;
+
+           
+
+
             InventoryItemWrapper.PropertyChanged += (s, e) =>
             {
                 if (!HasChanges)

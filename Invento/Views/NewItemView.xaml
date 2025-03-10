@@ -35,7 +35,7 @@
                   SelectedValuePath="CategoryId" SelectedValue="{Binding ItemWrapper.CategoryId,Mode=TwoWay}" SelectionChanged="ComboCategory_SelectionChanged"/>
         
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Quantity:" VerticalAlignment="Center" Margin="5"/>
-        <TextBox materialDesign:TextFieldAssist.UnderlineBrush="#FFFFCA40" MinWidth="300" Grid.Row="5" Grid.Column="1" Text="{Binding Quantity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  Margin="5"/>
+        <TextBox materialDesign:TextFieldAssist.UnderlineBrush="#FFFFCA40" PreviewTextInput="NumberValidationTextBox" MinWidth="300" Grid.Row="5" Grid.Column="1" Text="{Binding Quantity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  Margin="5"/>
 
         <Button Background="#FFFFCA40" BorderThickness="0" Grid.Row="7" Grid.Column="1"  Content="Save" Width="300"  HorizontalAlignment="Center" Command="{Binding SaveCommand}"/>
     </Grid>

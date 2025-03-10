@@ -10,13 +10,13 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="Extentions\" />
     <Folder Include="Converters\" />
     <Folder Include="Interface\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="8.2.0" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="MaterialDesignColors" Version="5.2.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">

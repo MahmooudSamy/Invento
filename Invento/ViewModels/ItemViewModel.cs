@@ -2,6 +2,7 @@
 using Invento.DataAccess.Data.Repositories;
 using Invento.Events;
 using Invento.Model;
+using Invento.Validation;
 using Invento.Wrapper;
 using System;
 using System.Collections.Generic;
@@ -111,7 +112,12 @@ namespace Invento.ViewModels
             };
             ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
         }
-
+        private void Validate()
+        {
+            var validator = new QuantityValidator();
+            var results = validator.Validate(this);
+           
+        }
         private Item CreateNewItem()
         {
 
@@ -142,7 +148,12 @@ namespace Invento.ViewModels
         public int Quantity
         {
             get { return _quantity; }
-            set { _quantity = value; OnPropertyChanged(); }
+            set
+            {
+                _quantity = value; 
+                OnPropertyChanged();
+                Validate();
+            }
         }
         private EventState _eventstate;
 

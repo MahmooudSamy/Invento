@@ -107,11 +107,11 @@ BorderThickness="0 0 0 5"  Grid.Row="0"   Grid.ColumnSpan="8"  >
                                                 <TextBlock Text="{Binding Quantity}" Width="150" Grid.Row="0" Grid.Column="3"  FontSize="14" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434"  Grid.ColumnSpan="2"   />
                                                 <TextBlock Text="{Binding LastUpdate}" Width="150" Grid.Row="0" Grid.Column="5"    FontSize="14" TextWrapping="Wrap" TextAlignment="Center"  Foreground="#FF343434"    />
 
-                                                <Button   Style="{DynamicResource StyleOfSideMenueButton}" Width="40" Grid.Row="0" Grid.Column="6" Height="30"   Margin="20,0,56,0" >
-                                                    <materialDesign:PackIcon Kind="ViewArrowLeftOutline" ToolTip="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
+                                                <Button   Style="{DynamicResource StyleOfSideMenueButton}" Width="40" Grid.Row="0" Grid.Column="6" Height="30"   Margin="20,0,56,0" Cursor="Hand" Command="{Binding ViewCommand}">
+                                                    <materialDesign:PackIcon Kind="ViewArrowLeftOutline" ToolTip="View" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24" />
                                                 </Button>
-                                                <Button  Style="{DynamicResource StyleOfSideMenueButton}" Width="40"  Grid.Row="0" Grid.Column="6" FontSize="20"  Foreground="#FF343434" FontWeight="Bold"  Margin="0,0,20,0"  HorizontalAlignment="Right" >
-                                                    <materialDesign:PackIcon Kind="Edit" ToolTip="Delete" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
+                                                <Button  Style="{DynamicResource StyleOfSideMenueButton}" Width="40"  Grid.Row="0" Grid.Column="6" FontSize="20"  Foreground="#FF343434" FontWeight="Bold"  Cursor="Hand"  Margin="0,0,20,0"  HorizontalAlignment="Right" Command="{Binding EditCommand}">
+                                                    <materialDesign:PackIcon Kind="Edit" ToolTip="Edit" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24"/>
 
                                                 </Button>
                                             </Grid>

@@ -27,7 +27,7 @@ namespace Invento.Views
 
         private void ComboCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show(ComboCategory.SelectedValue.ToString());
+            //MessageBox.Show(ComboCategory.SelectedValue.ToString());
         }
     }
 }

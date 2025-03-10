@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Microsoft.IdentityModel.Tokens;
 using Prism;
@@ -32,12 +33,12 @@ namespace Invento.ViewModels
 
         private void OnViewCommand()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("view");
         }
 
         private void OnEditeExecute()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("edite");
         }
 
         public int ItemId { get; set; }

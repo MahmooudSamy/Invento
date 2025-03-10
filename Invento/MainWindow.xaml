@@ -181,7 +181,7 @@ Style="{DynamicResource MaterialDesignHeadline4TextBlock}" />
                     </StackPanel>
                   
                     <Grid x:Name="MenuButtons"  Margin="0,150,0,0"    Width="210">
-                        <views:SideMenuBtns/>
+                        <views:SideMenuBtns DataContext="{Binding NavigationViewModel}"/>
                     </Grid>
             </Grid>
                 

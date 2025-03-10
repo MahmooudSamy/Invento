@@ -1,25 +1,30 @@
 ﻿using Invento.DataAccess.Data.Lookups;
+using Invento.Events;
 using Invento.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Invento.ViewModels
 {
     public class NavigationViewModel : INavigationViewModel
     {
         private IItemsLookupDataService _itemDataService;
+        private IEventAggregator _eventAggregator;
 
-        public NavigationViewModel(IItemsLookupDataService itemDataService)
+        public NavigationViewModel(IItemsLookupDataService itemDataService,IEventAggregator eventAggregator)
         {
             _itemDataService = itemDataService;
             ItemsCollection = new ObservableCollection<Item>();
+            ItemCommand = new DelegateCommand(OnOpenPageExecute);
+            _eventAggregator = eventAggregator;
         }
+
+        private void OnOpenPageExecute()
+        {
+            _eventAggregator.GetEvent<OpenListPageEvent>().Publish(true);  
+        }
+
         public async Task LoadAsync()
         {
             try
@@ -36,6 +41,10 @@ namespace Invento.ViewModels
                 MessageBox.Show(ex.Message);
             }
         }
+        public ICommand ItemCommand { get; }
+
+       
+
         public ObservableCollection<Item> ItemsCollection { get; set; }
 
     }

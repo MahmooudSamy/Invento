@@ -40,7 +40,7 @@
             </Button>
 
             <Button HorizontalContentAlignment="Stretch" Grid.Row="10" Height="40" Cursor="Hand" ToolTip="Dashboard"
-  Padding="15" MinWidth="84" HorizontalAlignment="Left" Width="200" Style="{DynamicResource StyleOfSideMenueButton}">
+  Padding="15" MinWidth="84" HorizontalAlignment="Left" Width="200" Style="{DynamicResource StyleOfSideMenueButton}" Command="{Binding ItemCommand}">
                 <Grid  Height="Auto">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="32"/>

@@ -14,5 +14,6 @@ namespace Invento.Events
     {
         public int ItemID { get; set; }
         public int Quantity { get; set; }
+        public EventState State { get; set; }
     }
 }

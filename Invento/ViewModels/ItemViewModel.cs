@@ -48,14 +48,28 @@ namespace Invento.ViewModels
         {
             //try
             //{
-              
-                await _itemRepository.SaveAsync();
-                HasChanges = _itemRepository.HasChanges();
-            _eventAggregator.GetEvent<SendIdEvent>().Publish(new SendIdEventArgs
+
+            await _itemRepository.SaveAsync();
+            HasChanges = _itemRepository.HasChanges();
+            if (EventState == EventState.AddNew)
             {
-                ItemID = ItemWrapper.Id,
-                Quantity = Quantity
-            });
+                _eventAggregator.GetEvent<SendIdEvent>().Publish(new SendIdEventArgs
+                {
+                    ItemID = ItemWrapper.Id,
+                    Quantity = Quantity,
+                    State=EventState.AddNew
+                });
+            }
+            else if (EventState == EventState.Edit)
+            {
+                //event edite
+                _eventAggregator.GetEvent<SendIdEvent>().Publish(new SendIdEventArgs
+                {
+                    ItemID = ItemWrapper.Id,
+                    Quantity = Quantity,
+                    State = EventState.Edit
+                });
+            }
             //}
             //catch (Exception ex)
             //{
@@ -63,9 +77,11 @@ namespace Invento.ViewModels
             //}
         }
 
-       
-        public async Task AddEditInventoryItem(int? itemId)
+
+        public async Task AddEditInventoryItem(int? itemId, int quantity, EventState eventState)
         {
+            Quantity = quantity;
+            EventState = eventState;
             var item = itemId.HasValue
                 ? await _itemRepository.GetAsyncById(itemId.Value)
                 : CreateNewItem();
@@ -74,7 +90,7 @@ namespace Invento.ViewModels
             if (ItemWrapper.Id == 0)
             {
                 ItemWrapper.ItemName = "";
-                
+
             }
 
         }
@@ -127,6 +143,13 @@ namespace Invento.ViewModels
         {
             get { return _quantity; }
             set { _quantity = value; OnPropertyChanged(); }
+        }
+        private EventState _eventstate;
+
+        public EventState EventState
+        {
+            get { return _eventstate; }
+            set { _eventstate = value; OnPropertyChanged(); }
         }
 
         public ItemWrapper ItemWrapper

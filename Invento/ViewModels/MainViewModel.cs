@@ -36,6 +36,17 @@ namespace Invento.ViewModels
             OpenNewItem = new DelegateCommand(OnOpenNewItemExceute);
             _eventAggregator.GetEvent<SendIdEvent>().Subscribe(OnSendDataToInventoryItemExecute);
             _eventAggregator.GetEvent<OpenListPageEvent>().Subscribe(OnOpenPageExecute);
+            _eventAggregator.GetEvent<SendDataForEditeEvent>().Subscribe(OnEditItemExcute);
+        }
+
+        private void OnEditItemExcute(SendDataForEditeEventArgs ItemData)
+        {
+            if(ItemData.State==EventState.Edit)
+            {
+                ItemViewModel = _ItemViewModelCreator();
+                ItemViewModel.AddEditInventoryItem(ItemData.ItemID,ItemData.Quantity,EventState.Edit);
+                PageToNavigate = new AddEditItem(this);
+            }
         }
 
         private async void OnOpenPageExecute(bool IsOpen)
@@ -49,10 +60,23 @@ namespace Invento.ViewModels
         private void OnSendDataToInventoryItemExecute(SendIdEventArgs ItemData)
         {
             InventoryItemViewModel = _InventoryViewModelCreator();
-            if (ItemData.ItemID != 0)
+            //check edit or add new 
+            if (ItemData.State == EventState.AddNew) 
             {
-                InventoryItemViewModel.AddEditInventoryItem(null,ItemData.ItemID, ItemData.Quantity);
+                if (ItemData.ItemID != 0)
+                {
+                    InventoryItemViewModel.AddEditInventoryItem(null, ItemData.ItemID, ItemData.Quantity,ItemData.State);
+                }
             }
+            else if(ItemData.State==EventState.Edit)
+            {
+                if (ItemData.ItemID != 0)
+                {
+                    InventoryItemViewModel.AddEditInventoryItem(ItemData.ItemID, ItemData.ItemID, ItemData.Quantity, ItemData.State);
+                }
+
+            }
+           
 
 
         }
@@ -60,7 +84,7 @@ namespace Invento.ViewModels
         private void OnOpenNewItemExceute()
         {
             ItemViewModel = _ItemViewModelCreator();
-            ItemViewModel.AddEditInventoryItem(null);
+            ItemViewModel.AddEditInventoryItem(null,0,EventState.AddNew);
             PageToNavigate = new AddEditItem(this);
         }
 

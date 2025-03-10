@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Invento.Events;
 using Microsoft.IdentityModel.Tokens;
 using Prism;
 
@@ -38,7 +39,12 @@ namespace Invento.ViewModels
 
         private void OnEditeExecute()
         {
-            MessageBox.Show("edite");
+            _eventAggregator.GetEvent<SendDataForEditeEvent>().Publish(new SendDataForEditeEventArgs
+            {
+                ItemID = ItemId,
+                Quantity = Quantity,
+                State = EventState.Edit
+            });
         }
 
         public int ItemId { get; set; }

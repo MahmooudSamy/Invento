@@ -34,10 +34,18 @@ namespace Invento.ViewModels
         {
             try
             {
-                InventoryItemWrapper.ItemId = ItemId;
+                
+                
+                   
+                
+                if (EventState == EventState.AddNew)
+                {
+                    InventoryItemWrapper.ItemId = ItemId;
+                }
                 InventoryItemWrapper.InventoryId = 1;
                 InventoryItemWrapper.Quantity = Quantity;
                 InventoryItemWrapper.LastUpdate = DateTime.Now;
+
 
                 await _inventoryItemRepository.SaveAsync();
                 HasChanges = _inventoryItemRepository.HasChanges();
@@ -52,10 +60,11 @@ namespace Invento.ViewModels
 
        
 
-        public async Task AddEditInventoryItem(int? itemId,int itemIdSending, int quantity)
+        public async Task AddEditInventoryItem(int? itemId,int itemIdSending, int quantity,EventState eventState)
         {
             Quantity = quantity;
             ItemId = itemIdSending;
+            EventState = eventState;
             var item = itemId.HasValue
                ? await _inventoryItemRepository.GetInventoryItemAsyncById(itemId.Value)
                : CreateNewItem();
@@ -112,6 +121,13 @@ namespace Invento.ViewModels
                 }
 
             }
+        }
+        private EventState _eventstate;
+
+        public EventState EventState
+        {
+            get { return _eventstate; }
+            set { _eventstate = value; OnPropertyChanged(); }
         }
         private int _quantity;
 

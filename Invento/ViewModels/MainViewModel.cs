@@ -38,6 +38,15 @@ namespace Invento.ViewModels
             _eventAggregator.GetEvent<OpenListPageEvent>().Subscribe(OnOpenPageExecute);
             _eventAggregator.GetEvent<SendDataForEditeEvent>().Subscribe(OnEditItemExcute);
             _eventAggregator.GetEvent<SendItemDataForViewDetailsEvent>().Subscribe(OnViewItemDetailsExecute);
+            _eventAggregator.GetEvent<CloseDetailsViewEvent>().Subscribe(OnClosItemDetailsExecute);
+        }
+
+        private void OnClosItemDetailsExecute(bool IsClose)
+        {
+            if(IsClose)
+            {
+                ItemViewModel = null;
+            }    
         }
 
         private void OnViewItemDetailsExecute(SendItemDataForViewDetailsEventArgs ItemData)

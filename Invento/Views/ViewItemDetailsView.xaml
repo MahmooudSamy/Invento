@@ -18,7 +18,8 @@ BorderThickness="3" UniformCornerRadius="5" MaxHeight="300" MaxWidth="300">
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button  Foreground="#FFACABAB" Grid.Row="0" Grid.Column="1"  Style="{DynamicResource StyleofClose}" Margin="0,0,1,0" >
+            <Button Cursor="Hand"  Foreground="#FFACABAB" Grid.Row="0" Grid.Column="1" 
+                    Style="{DynamicResource StyleofClose}" Margin="0,0,1,0" Command="{Binding CloseCommand}">
                 <materialDesign:PackIcon Kind="Close" VerticalContentAlignment="Center" 
                              HorizontalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="32" Height="32"/>
             </Button>

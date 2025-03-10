@@ -28,8 +28,15 @@ namespace Invento.ViewModels
             _eventAggregator = eventAggregator;
             _categoriesLookup = categoriesLookup;
             SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
+            CloseCommand = new DelegateCommand(OnCloseDetailsViewExecute);
             CategoriesCollection = new ObservableCollection<CategoryDto>();
         }
+
+        private void OnCloseDetailsViewExecute()
+        {
+            _eventAggregator.GetEvent<CloseDetailsViewEvent>().Publish(true);
+        }
+
         private async Task LoadCategoryAsync()
         {
             CategoriesCollection.Clear();
@@ -208,6 +215,7 @@ namespace Invento.ViewModels
             set { _itemName = value; OnPropertyChanged(); }
         }
         public ICommand SaveCommand { get; }
+        public ICommand CloseCommand { get; }
         public ObservableCollection<CategoryDto> CategoriesCollection { get; }
     }
 }

@@ -21,10 +21,46 @@ namespace Invento.ViewModels
             _lookupDataService = lookupDataService;
             _eventAggregator = eventAggregator;
             ItemesCollection = new ObservableCollection<ListOfItemsItemViewModel>();
-            
+            CheckedCommand = new DelegateCommand(OnCheckedExecute);
+            UncheckedCommand= new DelegateCommand(OnUncheckedExecute);
         }
 
-      
+        private async void OnUncheckedExecute()
+        {
+            try
+            {
+                var items = await _lookupDataService.GetInventoryItemsLowStockListAysc();
+                ItemesCollection.Clear();
+                foreach (var item in items)
+                {
+                    ItemesCollection.Add(new ListOfItemsItemViewModel(item.ItemId, item.ItemName
+                        , item.CategoryName, item.Quantity, item.LastUpdate, _eventAggregator));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private async void OnCheckedExecute()
+        {
+            try
+            {
+                var items = await _lookupDataService.GetInventoryItemsInStockListAysc();
+                ItemesCollection.Clear();
+                foreach (var item in items)
+                {
+                    ItemesCollection.Add(new ListOfItemsItemViewModel(item.ItemId, item.ItemName
+                        , item.CategoryName, item.Quantity, item.LastUpdate, _eventAggregator));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         public async Task LoadAllItems()
         {
@@ -59,7 +95,26 @@ namespace Invento.ViewModels
                 }
             }
         }
+        private bool _isChecked=true;
+        public bool IsChecked
+        {
+            get { return _isChecked; }
+            set
+            {
+                _isChecked = value;
+                OnPropertyChanged();
 
+                if (value)
+                {
+                    OnCheckedExecute();
+                }
+                else
+                {
+                    OnUncheckedExecute();
+                }
+
+            }
+        }
         private async void SearchFunction(string searchkeyword)
         {
             try
@@ -78,6 +133,8 @@ namespace Invento.ViewModels
             }
         }
         
+        public ICommand CheckedCommand { get; }
+        public ICommand UncheckedCommand { get; }
         public ObservableCollection<ListOfItemsItemViewModel> ItemesCollection { get; }
     }
 }

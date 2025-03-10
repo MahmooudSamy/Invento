@@ -49,6 +49,24 @@ namespace Invento.DataAccess.Data.Lookups
               
         }
 
+        public async Task<IEnumerable<InventoryItemDto>> GetInventoryItemsInStockListAysc()
+        {
+            using (var context = _contextcreator())
+            {
+                var item = await context.Database.SqlQueryRaw<InventoryItemDto>("EXEC GetItemInStock")
+                    .ToListAsync();
+                return item;
+            }
+        }
+        public async Task<IEnumerable<InventoryItemDto>> GetInventoryItemsLowStockListAysc()
+        {
+            using (var context = _contextcreator())
+            {
+                var item = await context.Database.SqlQueryRaw<InventoryItemDto>("EXEC GetItemLowStock")
+                    .ToListAsync();
+                return item;
+            }
+        }
         public async Task<IEnumerable<InventoryItemDto>> GetInventoryItemsListAysc()
         {
             using (var context = _contextcreator()) 
@@ -58,5 +76,7 @@ namespace Invento.DataAccess.Data.Lookups
                 return item;
             }
         }
+
+      
     }
 }
